@@ -1,0 +1,17 @@
+/*Crie um programa que receba três argumentos da linha de
+	comando e imprima-os na mesma linha, em ordem inversa.
+	Exemplo: java Programa a1 a2 a3
+	Saída: a3 a2 a1*/
+	
+	public static void main(String[] args) {
+		
+		int i, tam = args.length;
+		
+		if(tam != 3)
+			System.out.println("Forneça 3 argumetnos");
+		else
+			for(i=tam-1; i>=0; i--) {
+				
+				System.out.printf("args[%d]: %s%n", i, args[i]);
+			}
+		}
