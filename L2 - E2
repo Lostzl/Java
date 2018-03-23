@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+/*Altere o programa AloMundo para que ele imprima os
+parâmetros recebidos pela linha de comando de execução do
+programa. (Dica: são os valores do array args: args[0], args[1],
+etc.)*/
+
+public class AloMundo {
+
+	public static void main(String[] args) {
+		int i, tam = args.length;
+		
+		for(i=0; i<tam; i++) {
+			System.out.printf("args[%d]: %s%n", i, args[i]);
+		}
+		
+		
+
+	}
