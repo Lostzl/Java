@@ -1,0 +1,25 @@
+package Lista04;
+
+import javax.swing.JOptionPane; //Todo argumento lido pelo JOptionPane entra em forma de String.
+
+public class Execicio01 {
+
+	public static void main(String args[]) {
+		/*Faça um programa que leia valores para preencher um vetor de float com 10 posições. Em
+		seguida, o programa deve imprimir a soma dos valores.
+		Utilize o JOptionPane para leitura dos valores.*/
+
+		float vetor[] = new float[10];
+		float soma = 0;
+		int i = 0;
+
+		for(i = 0; i < 10; i++) {		
+			vetor[i] = Float.parseFloat(JOptionPane.showInputDialog("entre com o valor"));	//Convertendo String em Float.
+			soma = soma + vetor[i];
+		}
+
+		System.out.printf("A soma dos valores eh: %.2f", soma);
+
+	}
+
+}
