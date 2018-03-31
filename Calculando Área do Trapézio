@@ -1,0 +1,50 @@
+package Lista03;
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Exercicio01 {
+	/*(Ex.1) Implemente um programa para calcular a área de
+			um trapézio, onde:
+
+			h = altura
+			b = base menor
+			B = base maior
+			Área = (h . (b + B)) / 2*/
+
+	/*(Ex.2) Faça o programa acima calcular utilizando valores
+		de ponto flutuante e depois imprima na tela duas
+		informações:
+		Valor exato da área
+		Valor da área arredondado para inteiro*/
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		float altura = 0;
+		float baseMenor = 0;
+		float baseMaior = 0;
+		float area = 0;
+		int areaArredondada = 0;
+
+
+		System.out.printf("Entre com a Altura(cm):");
+		altura = sc.nextFloat();
+		System.out.printf("Entre com a Base Menor(cm):");
+		baseMenor = sc.nextFloat();
+		System.out.printf("Entre com a Base Maior(cm):");
+		baseMaior = sc.nextFloat();
+
+		area = ((altura*(baseMenor+baseMaior))/2);
+		
+		areaArredondada = Math.round(area);
+
+		System.out.printf("%nValor Exato da Area: %.2f(cm^2)", area);
+		System.out.printf("%nValor da Area arredondado: %d(cm^2)", areaArredondada);
+
+
+	}
+
+
+}
