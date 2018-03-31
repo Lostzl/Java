@@ -1,0 +1,79 @@
+import javax.swing.JOptionPane;
+import java.util.Scanner;
+public class Exercicio04 {
+	public static void main(String[] args) {
+
+		/* Faça um programa que receba como entrada o número 
+		 * de alunos de uma turma e o número de
+		 * provas que eles fizeram ao longo de um trimestre. Em seguida, 
+		 * o programa deve pedir as notas de todos os alunos em cada uma 
+		 * das provas e calcular a média de cada aluno e a média de cada prova. 
+		 * Ao final o programa deve mostrar as médias dos alunos, as médias 
+		 * de cada prova e a média geral da turma. 
+		 */
+
+		int quantidadeAlunos = Integer.parseInt(JOptionPane.showInputDialog("Quantidade de Alunos na Turma:"));
+		String alunos[] = new String[quantidadeAlunos];
+		int quantidadeProvas = Integer.parseInt(JOptionPane.showInputDialog("Numero de Provas realizadas por cada Aluno:"));
+		float notas[][] = new float[quantidadeAlunos][quantidadeProvas];
+		float mediaAlunos[] = new float[quantidadeAlunos];
+		float mediaProvas[] = new float[quantidadeProvas];
+		float mediaTurma = 0;
+		int i, j;
+		float media = 0;
+		Scanner nome = new Scanner(System.in);
+		Scanner nota = new Scanner(System.in);
+
+		//Recebe o nome de cada Aluno da Turma.
+		for(i = 0; i < quantidadeAlunos; i++) {
+			System.out.printf("%n[%d] Nome do Aluno:", i+1);
+			alunos[i] = nome.nextLine();
+		}
+
+		//Recebe as notas referentes a cada prova feita por cada aluno.
+		for(i = 0; i < quantidadeAlunos; i++) {
+			for(j = 0; j < quantidadeProvas; j++) {
+				System.out.printf("%nAluno(a): %s - Nota P%d:", alunos[i], j+1);
+				notas[i][j] = nota.nextFloat();
+			}
+		}
+
+		//Calcula a média Para cada Aluno separadamente.
+		for(i = 0; i < quantidadeAlunos; i++) {
+			mediaAlunos[i] = 0;
+			for(j = 0; j < quantidadeProvas; j++) {
+				media += notas[i][j];
+			}
+			mediaAlunos[i] = media/quantidadeProvas;
+			media = 0;
+		}
+
+		//Calcula a média de cada prova feita por todos os alunos.
+		for(i = 0; i < quantidadeProvas; i++) {
+			mediaProvas[i] = 0;
+			for(j = 0; j < quantidadeAlunos; j++) {
+				media += notas[j][i];
+			}
+			mediaProvas[i] = media/quantidadeAlunos;
+			media = 0;
+		}
+
+		//Calcula a média geral da Turma.
+		for(i = 0; i < mediaAlunos.length; i++) {
+			mediaTurma += mediaAlunos[i];
+		}
+
+		mediaTurma = mediaTurma/quantidadeAlunos;
+
+		System.out.printf("%n----- MÉDIA DOS ALUNOS -----%n");
+		for(i = 0; i < quantidadeAlunos; i++) {
+			System.out.printf("%n[%d] %s teve média igual a: %.2f%n", i+1, alunos[i], mediaAlunos[i]);		
+		}
+		System.out.printf("%n----- MÉDIA DAS PROVAS -----%n");
+		for(i = 0; i < quantidadeProvas; i++) {
+			System.out.printf("%nA média da P%d foi de: %.2f%n", i+1, mediaProvas[i]);
+		}
+		System.out.printf("%n----- MÉDIA GERAL DA TURMA -----%n");
+		System.out.printf("%nA média geral da turma foi de: %.2f", mediaTurma);
+	}
+}
