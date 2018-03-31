@@ -1,0 +1,44 @@
+import java.util.Scanner;
+public class Exercicio02 {
+	public static void main(String[] args) {
+		
+		/* Faça um programa que leia uma matriz de 
+		 * números reais 5x5 e em seguida calcule e mostre sua
+		 * matriz transposta correspondente na forma “formatada” em linhas e colunas.
+		 */
+		
+		Scanner sc = new Scanner(System.in);
+		float matriz[][] = new float[3][3];
+		int i, j;
+
+		for(i = 0; i < matriz.length; i++) {
+			for(j = 0; j < matriz[0].length; j++) {
+				System.out.printf("Entre com o valor da posição[%d][%d]:", i, j);
+				matriz[i][j] = sc.nextFloat();
+			}
+		}
+
+		System.out.printf("%n");
+		System.out.printf("%n");
+		System.out.printf("Matriz original:%n%n");
+
+		for(i = 0; i < matriz.length; i++) {
+			for(j = 0; j < matriz[0].length; j++) {
+				System.out.printf("%.2f ", matriz[i][j]);
+			}
+			System.out.printf("%n");
+		}
+
+		System.out.printf("%n");
+		System.out.printf("Matriz Transposta:%n%n");
+
+		for(i = 0; i < matriz.length; i++) {
+			for(j = 0; j < matriz[0].length; j++) {
+				System.out.printf("%.2f ", matriz[j][i]);
+			}
+			System.out.printf("%n");
+		}
+
+	}
+
+}
