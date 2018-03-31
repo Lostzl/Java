@@ -1,0 +1,56 @@
+package Lista03;
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Exercicio05 {
+	/*  Considere que as medidas dos lados de um
+			triângulo são expressos por a, b e c.
+			Faça um programa que leia as medidas a, b e c
+			e, em seguida:
+
+			a) Diga se é possível construir um triângulo
+			com estas medidas;
+			b) Se for possível, apresente a área e o
+			perímetro do triângulo.  */
+
+	public static void main(String[] args) {
+
+		float a = 0;
+		float b = 0;
+		float c = 0;
+		float perimetro = 0;
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.printf("%nEntre com a medida A(cm):");
+		a = sc.nextFloat();
+		System.out.printf("%nEntre com a medida B(cm):");
+		b = sc.nextFloat();
+		System.out.printf("%nEntre com a medida C(cm):");
+		c = sc.nextFloat();
+
+		/*  | b - c | < a < b + c 
+				| a - c | < b < a + c 
+				| a - b | < c < a + b   Condição para construção de um triangulo! */ 
+
+		if((Math.abs(b - c) < a)  && (a < b + c)) {
+			if((Math.abs(a - c) < b)  && (b < a + c)) {
+				if((Math.abs(a - b) < c)  && (c < a + b)) {
+					System.out.printf("%nÉ POSSIVEL CONTRUIR UM TRIANGULO!%n");
+
+					perimetro = a + b + c;
+
+					System.out.printf("%nSeu perimetro é: %.2f", perimetro);
+
+				}else {
+					System.out.printf("%nNÃO É POSSIVEL CONSTRUIR UM TRIANGULO!!%n");
+				}
+			}else {
+				System.out.printf("%nNÃO É POSSIVEL CONSTRUIR UM TRIANGULO!!%n");
+			}
+		}else {
+			System.out.printf("%nNÃO É POSSIVEL CONSTRUIR UM TRIANGULO!!%n");
+		}
+	}
+}
