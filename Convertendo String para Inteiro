@@ -1,0 +1,61 @@
+package Lista06;
+import java.lang.*;
+import javax.swing.*;
+import java.io.*;
+public class Exercicio02 {
+	/*Construa sua própria função parseInt denominando-a de
+			analisarInteiro. */
+
+	public static int analisarInteiro(String s) {
+		boolean negativo = false;
+		int i, contTrue = 0, inteiro = 0;
+		byte[] numeros = s.getBytes();
+		char[] vetS = s.toCharArray();
+
+		for(i = 0; i < vetS.length; i++) {
+			if(Character.isDigit(vetS[i])) {
+				contTrue += 1;
+			}
+			if(vetS[0] == '-') {
+				negativo = true;
+			}
+		}
+
+		if(negativo) {
+			byte numero[] = new byte[numeros.length-1];
+			for(i = 0; i<numero.length; i++) {
+				numero[i] = numeros[i+1];
+			}
+			if(contTrue + 1 == vetS.length) {
+				for (byte b : numero) {
+					int valor = b - 0x30; //Reduz o valor ascii do 0 (48 em decimal)
+					inteiro = inteiro * 10 + valor;
+				}
+			}else{
+				System.out.printf("%nO valor inserido não é válido!!%n");
+				return -1;
+			}
+			inteiro = inteiro * -1;
+			return inteiro;
+		}
+
+
+		if(contTrue == vetS.length) {
+			for (byte b : numeros) {
+				int valor = b - 0x30; //Reduz o valor ascii do 0 (48 em decimal)
+				inteiro = inteiro * 10 + valor;
+			}
+		}else{
+			System.out.printf("%nO valor inserido não é válido!!%n");
+			return -1;
+		}
+		return inteiro;
+	}
+
+	public static void main(String[] args) {
+
+		String string = JOptionPane.showInputDialog("Entre com um Valor Inteiro:");
+		int k = analisarInteiro(string);
+		System.out.printf("O numero é Int: %d %n", k);
+	}
+}
