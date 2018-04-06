@@ -8,7 +8,7 @@ public class Exercicio02 {
 		 */
 		
 		Scanner sc = new Scanner(System.in);
-		float matriz[][] = new float[3][3];
+		float matriz[][] = new float[5][5];
 		int i, j;
 
 		for(i = 0; i < matriz.length; i++) {
