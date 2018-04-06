@@ -34,7 +34,7 @@ public class Exercicio02 {
 
 		for(i = 0; i < matriz.length; i++) {
 			for(j = 0; j < matriz[0].length; j++) {
-				System.out.printf("%.2f ", matriz[j][i]);
+				System.out.printf("%5.2f ", matriz[j][i]);
 			}
 			System.out.printf("%n");
 		}
