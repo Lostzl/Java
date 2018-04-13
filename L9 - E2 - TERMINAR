@@ -1,0 +1,107 @@
+// SUPER CLASSE 'PESSOA'
+
+package exercicies;
+
+public class Pessoa {
+	String nome;
+	String dataNasc;
+	String cpf;
+	
+}
+
+//CLASSE ESTUDANTE
+
+package exercicies;
+import java.io.*;
+public class Estudante extends Pessoa{
+	String curso;
+	long matricula;
+	double nota1Sem;
+	double nota2Sem;
+
+	public Estudante() {
+		this.nome = "Fulano";
+		this.matricula = 00000;
+	}
+
+	void status(){
+		System.out.printf("Nome do Aluno: %s%n", this.nome);
+		System.out.printf("Matrícula: %s%n", this.matricula);
+		System.out.printf("Curso: %s%n", this.curso);
+		System.out.printf("Data de Nascimento: %s%n", this.dataNasc);
+		System.out.printf("Sua nota N1 do Semestre: %.2f%n", this.nota1Sem);
+		System.out.printf("Sua nota N2 do Semestre: %.2f%n", this.nota2Sem);
+	}
+
+	public void setNome(String nome1) {
+		this.nome = nome1;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setMatricula(long mat) {
+		this.matricula = mat;
+	}
+	public long getMatricula() {
+		return this.matricula;
+	}
+	public void setCurso(String curso1) {
+		this.curso = curso1;
+	}
+	public String getCurso() {
+		return this.curso;
+	}
+	public void setDataNasc(String datNasc) {
+		this.dataNasc = datNasc;
+	}
+	public String getDataNasc() {
+		return this.dataNasc;
+	}
+	public void setNota1(double not) {
+		this.nota1Sem = not;
+	}
+	public double getNota1() {
+		return this.nota1Sem;
+	}
+	public void setNota2(double not2) {
+		this.nota2Sem = not2;
+	}
+	public double getNota2() {
+		return this.nota2Sem;
+	}
+
+	public void aprovacao() {
+		double med = (this.nota1Sem + this.nota2Sem)/2;
+		if(med >= 6.0) {
+			System.out.printf("O Aluno foi Aprovado e teve Media igual: %.2f%n", med);
+		}else {
+			System.out.printf("O Aluno foi Reprovado e teve Media igual: %.2f", med);
+		}
+	}	
+}
+
+// CLASSE PROFESSOR
+
+package exercicies;
+
+public class Professor {
+	
+}
+//CLASSE APLICATIVO C/ ESTUDANTE MODELADOR
+
+package exercicies;
+import java.io.*;
+public class EstudanteMod {
+	public static void main(String[] args) {
+		Estudante a = new Estudante();
+		a.setNome("Lucas");
+		a.setMatricula(201703684);
+		a.setCurso("Eng. Comp.");
+		a.setDataNasc("15/02/1997");
+		a.setNota1(6.10);
+		a.setNota2(5.0);
+		a.status();
+		a.aprovacao();
+		
+	}
+}
