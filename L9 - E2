@@ -1,17 +1,15 @@
-// SUPER CLASSE 'PESSOA'
+//SUPER CLASSE 
 
-package Lista09;
-
+package lista09;
 public abstract class Pessoa {
-
 	protected String nome;
 	protected String dataNasc;
 	protected String cpf;
-
 }
-//CLASSE CURSO SUPERIOR
 
-package Lista09;
+//CLASSE 'CursoSuperior'
+
+package lista09;
 
 public abstract class CursoSuperior extends Pessoa {
 	protected String curso;
@@ -23,11 +21,9 @@ public abstract class CursoSuperior extends Pessoa {
 	public abstract String horaAula(String a);
 }
 
+//CLASSE 'Estudante'
 
-//CLASSE ESTUDANTE
-
-package Lista09;
-
+package lista09;
 public class Estudante extends CursoSuperior {
 	long matricula;
 
@@ -104,15 +100,14 @@ public class Estudante extends CursoSuperior {
 		System.out.printf("Disciplina: %s%n", this.disciplina);
 		System.out.printf("Sua nota N1 do Semestre: %.2f%n", this.nota1Sem);
 		System.out.printf("Sua nota N2 do Semestre: %.2f%n", this.nota2Sem);
-		System.out.printf("%n-----------------------------------------------%n");
+		System.out.printf("-----------------------------------------------%n");
 	}
 
 }
 
-// CLASSE PROFESSOR
+//CLASSE 'Professor'
 
-package Lista09;
-
+package lista09;
 public class Professor extends CursoSuperior{
 
 	@Override
@@ -138,14 +133,68 @@ public class Professor extends CursoSuperior{
 	public String getDisciplina() {
 		return disciplina;
 	}
+	public void setDataNasc(String datNasc) {
+		this.dataNasc = datNasc;
+	}
+	public String getDataNasc() {
+		return this.dataNasc;
+	}
+	
+	void status(){
+		System.out.printf("Nome do Professor: %s%n", this.nome);
+		System.out.printf("Data de Nascimento: %s%n", this.dataNasc);
+		System.out.printf("CPF: %s%n", this.cpf);
+		System.out.printf("Disciplina: %s%n", this.disciplina);
+		System.out.printf("-----------------------------------------------%n");
+	}
+	
 }
 
-//CLASSE APLICATIVO C/ PARA TESTE
+//CLASSE 'Disciplina'
 
-package Lista09;
+package lista09;
+public class Disciplina extends CursoSuperior{
+	
+	protected String diasDaSemana;
+	
+	@Override
+	public String horaAula(String a) {
+		this.horario = a;
+		return a;
+	}
+	
+	public void setNome(String nome1) {
+		this.nome = nome1;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setdiasDaSeaman(String b) {
+		this.diasDaSemana = b;
+	}
+	public String getName() {
+		return this.diasDaSemana;
+	}
+	public void setHorario(String c) {
+		this.horario = c;
+	}
+	public String getHorario() {
+		return this.horario;
+	}
+	
+	void status(){
+		System.out.printf("Nome da Disciplina: %s%n", this.nome);
+		System.out.printf("Dias na Semana: %s%n", this.diasDaSemana);
+		System.out.printf("Horário: %s%n", this.horario);
+		System.out.printf("-----------------------------------------------%n");
+	}
+}
 
+//CLASSE APLICATIVO P/ TESTE
+
+package lista09;
 public class Exercicio02 {
-	public static void mais(String args) {
+	public static void main(String[] args) {
 		Estudante a = new Estudante();
 		a.setNome("Lucas");
 		a.setCpf("0505780195");
@@ -153,8 +202,25 @@ public class Exercicio02 {
 		a.setCurso("Eng. Comp.");
 		a.setDisciplina("AP2");
 		a.setDataNasc("15/02/1997");
+		a.horaAula("07:00");
 		a.setNota1(6.10);
 		a.setNota2(5.0);
 		a.status();
+		a.aprovacao();
+		
+		Professor p = new Professor();
+		p.setNome("Paulo");
+		p.setCpf("0050515156");
+		p.setDisciplina("Calculo 1");
+		p.setDataNasc("18/02/45");
+		p.status();
+		
+		Disciplina d = new Disciplina();
+		d.setNome("Algebra I");
+		d.setdiasDaSeaman("Segunda - Quarta - Sexta");
+		d.setHorario("10:40 - 12:00");
+		d.status();
+		
 	}
+	
 }
