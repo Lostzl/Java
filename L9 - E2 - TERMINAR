@@ -1,38 +1,47 @@
 // SUPER CLASSE 'PESSOA'
 
-package exercicies;
+package Lista09;
 
-public class Pessoa {
-	String nome;
-	String dataNasc;
-	String cpf;
-	
+public abstract class Pessoa {
+
+	protected String nome;
+	protected String dataNasc;
+	protected String cpf;
+
 }
+//CLASSE CURSO SUPERIOR
+
+package Lista09;
+
+public abstract class CursoSuperior extends Pessoa {
+	protected String curso;
+	protected String disciplina;
+	protected String turma;
+	protected String horario;
+	protected double nota1Sem;
+	protected double nota2Sem;
+	public abstract String horaAula(String a);
+}
+
 
 //CLASSE ESTUDANTE
 
-package exercicies;
-import java.io.*;
-public class Estudante extends Pessoa{
-	String curso;
+package Lista09;
+
+public class Estudante extends CursoSuperior {
 	long matricula;
-	double nota1Sem;
-	double nota2Sem;
 
-	public Estudante() {
-		this.nome = "Fulano";
-		this.matricula = 00000;
+	@Override
+	public String horaAula(String a) {
+		horario = a;
+		return horario;
 	}
-
-	void status(){
-		System.out.printf("Nome do Aluno: %s%n", this.nome);
-		System.out.printf("Matrícula: %s%n", this.matricula);
-		System.out.printf("Curso: %s%n", this.curso);
-		System.out.printf("Data de Nascimento: %s%n", this.dataNasc);
-		System.out.printf("Sua nota N1 do Semestre: %.2f%n", this.nota1Sem);
-		System.out.printf("Sua nota N2 do Semestre: %.2f%n", this.nota2Sem);
+	public void setCpf(String f) {
+		this.cpf = f;
 	}
-
+	public String getCpf() {
+		return cpf;
+	}
 	public void setNome(String nome1) {
 		this.nome = nome1;
 	}
@@ -69,39 +78,83 @@ public class Estudante extends Pessoa{
 	public double getNota2() {
 		return this.nota2Sem;
 	}
-
+	public void setDisciplina(String b) {
+		this.disciplina = b;
+	}
+	public String getDisciplina() {
+		return disciplina;
+	}
 	public void aprovacao() {
 		double med = (this.nota1Sem + this.nota2Sem)/2;
 		if(med >= 6.0) {
 			System.out.printf("O Aluno foi Aprovado e teve Media igual: %.2f%n", med);
+			System.out.printf("%n-----------------------------------------------%n");
 		}else {
 			System.out.printf("O Aluno foi Reprovado e teve Media igual: %.2f", med);
+			System.out.printf("%n-----------------------------------------------%n");
 		}
-	}	
+	}
+	void status(){
+		System.out.printf("Nome do Aluno: %s%n", this.nome);
+		System.out.printf("Data de Nascimento: %s%n", this.dataNasc);
+		System.out.printf("CPF: %s%n", this.cpf);
+		System.out.printf("Matrícula: %s%n", this.matricula);
+		System.out.printf("Curso: %s%n", this.curso);
+		System.out.printf("Hora Aula: %s%n", this.horario);
+		System.out.printf("Disciplina: %s%n", this.disciplina);
+		System.out.printf("Sua nota N1 do Semestre: %.2f%n", this.nota1Sem);
+		System.out.printf("Sua nota N2 do Semestre: %.2f%n", this.nota2Sem);
+		System.out.printf("%n-----------------------------------------------%n");
+	}
+
 }
 
 // CLASSE PROFESSOR
 
-package exercicies;
+package Lista09;
 
-public class Professor {
-	
+public class Professor extends CursoSuperior{
+
+	@Override
+	public String horaAula(String a) {
+		horario = a;
+		return horario;
+	}
+	public void setCpf(String f) {
+		this.cpf = f;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setNome(String nome1) {
+		this.nome = nome1;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setDisciplina(String b) {
+		this.disciplina = b;
+	}
+	public String getDisciplina() {
+		return disciplina;
+	}
 }
-//CLASSE APLICATIVO C/ ESTUDANTE MODELADOR
 
-package exercicies;
-import java.io.*;
-public class EstudanteMod {
-	public static void main(String[] args) {
+//CLASSE APLICATIVO C/ PARA TESTE
+
+package Lista09;
+
+public class Exercicio02 {
+	public static void mais(String args) {
 		Estudante a = new Estudante();
 		a.setNome("Lucas");
+		a.setCpf("0505780195");
 		a.setMatricula(201703684);
 		a.setCurso("Eng. Comp.");
+		a.setDisciplina("AP2");
 		a.setDataNasc("15/02/1997");
 		a.setNota1(6.10);
 		a.setNota2(5.0);
 		a.status();
-		a.aprovacao();
-		
 	}
 }
